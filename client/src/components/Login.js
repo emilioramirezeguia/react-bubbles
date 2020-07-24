@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const initialUser = {
     username: "",
     password: "",
@@ -21,6 +21,7 @@ const Login = () => {
       .post("http://localhost:5000/api/login", user)
       .then((response) => {
         localStorage.setItem("token", response.data.payload);
+        props.history.push("/colors");
       })
       .catch((error) => {
         console.log(error);
