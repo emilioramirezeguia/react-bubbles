@@ -6,6 +6,7 @@ import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
+  const [updateColorList, setUpdateColorList] = useState(false);
   // fetch your colors data from the server when the component mounts
   // set that data to the colorList state property
   const fetchColors = () => {
@@ -21,11 +22,16 @@ const BubblePage = () => {
 
   useEffect(() => {
     fetchColors();
-  }, []);
+    setUpdateColorList(false);
+  }, [updateColorList]);
 
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
+      <ColorList
+        colors={colorList}
+        updateColors={setColorList}
+        setUpdateColorList={setUpdateColorList}
+      />
       <Bubbles colors={colorList} />
     </>
   );
