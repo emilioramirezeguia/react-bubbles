@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 export const axiosWithAuth = () => {
@@ -6,7 +5,8 @@ export const axiosWithAuth = () => {
 
   return axios.create({
     headers: {
-      Authentication: token,
+      Authorization: token,
     },
+    baseURL: "http://localhost:5000/",
   });
 };
